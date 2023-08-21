@@ -82,27 +82,6 @@ routes.delete("/Products/:id", (req, res) => {
   Products.removeProduct(req, res);
 });
 
-// ============ Orders' router ==============
-routes.get("/orders", (req, res) => {
-  orders.fetchOrders(req, res);
-});
-routes.get("/order/:id", (req, res) => {
-  orders.fetchOrder(req, res);
-});
-routes.post(
-  "/addOrder/:orderID//:userID/:bookID",
-  bodyParser.json(),
-  (req, res) => {
-    orders.insertOrder(req, res);
-  }
-);
-routes.put("/order/:orderID", bodyParser.json(), (req, res) => {
-  orders.updateOrder(req, res);
-});
-routes.delete("/order/:orderID", (req, res) => {
-  orders.removeOrder(req, res);
-});
-
 module.exports = {
   express,
   routes,

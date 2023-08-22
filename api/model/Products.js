@@ -40,11 +40,11 @@ class Products{
             })
         })
     }
-    removeProducts(req, res){
+    removeProduct(req, res){
         const query = `
             DELETE FROM Products WHERE prodID = ${req.params.prodID}
         `
-        db.query(query, [req.params.prodID], (err)=>{
+        db.query(query, [req.body, req.params.prodID], (err)=>{
             if (err) throw err
             res.json({
                 status: res.statusCode,

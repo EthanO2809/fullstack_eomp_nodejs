@@ -66,22 +66,6 @@ routes.post("/login", bodyParser.json(), (req, res) => {
   users.login(req, res);
 });
 
-routes.get("/Products", (req, res) => {
-  Products.fetchProducts(req, res);
-});
-routes.get("/Products/:id", (req, res) => {
-  Products.fetchProducts(req, res);
-});
-routes.post("/Products", bodyParser.json(), (req, res) => {
-  Products.addProduct(req, res);
-});
-routes.patch("/Products/:id", bodyParser.json(), (req, res) => {
-  Products.updateProduct(req, res);
-});
-routes.delete("/Products/:id", (req, res) => {
-  Products.removeProduct(req, res);
-});
-
 module.exports = {
   express,
   routes,

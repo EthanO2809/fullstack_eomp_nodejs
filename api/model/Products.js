@@ -14,11 +14,11 @@ class Products{
             });
           });
     }
-    fetchProducts(req, res){
+    fetchProduct(req, res){
         const query = `
             SELECT prodID, prodName, quantity, amount, Category, prodUrl 
             FROM Products 
-            WHERE prodID = ${req.params.id}
+            WHERE prodID = ${req.params.prodID}
         `
         db.query(query, (err, result)=>{
             if (err) throw err

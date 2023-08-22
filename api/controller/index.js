@@ -41,31 +41,6 @@ routes.delete("/Products/:prodID", (req, res) => {
   products.removeProduct(req, res);
 });
 
-// =======
-routes.get("/Users/:id", (req, res) => {
-  users.fetchUsers(req, res);
-});
-
-routes.post("/register", bodyParser.json(), (req, res) => {
-  users.registerUser(req, res);
-});
-
-routes.put("/Users/:id", bodyParser.json(), (req, res) => {
-  users.updateUser(req, res);
-});
-
-routes.patch("/Users/:id", bodyParser.json(), (req, res) => {
-  users.updateUser(req, res);
-});
-
-routes.delete("/Users/:id", (req, res) => {
-  users.deleteUser(req, res);
-});
-
-routes.post("/login", bodyParser.json(), (req, res) => {
-  users.login(req, res);
-});
-
 module.exports = {
   express,
   routes,

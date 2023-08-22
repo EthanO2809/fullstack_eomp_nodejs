@@ -46,7 +46,7 @@ class Users {
           msg: "You are providing the wrong email",
         });
       } else {
-        await compare(userPass, result[0].userPass, (cerr, cresult) => {
+        compare(userPass, result[0].userPass, (cerr, cresult) => {
           if (cerr) throw cerr;
           // Create a token
           const token = createToken({
@@ -101,7 +101,7 @@ class Users {
     const query = `
             DELETE FROM Users WHERE UserID = ${req.params.UserID}
         `;
-    db.query(query, [req.body, req.params.UserID], (err) => {
+    db.query(query, [req.params.UserID], (err) => {
       if (err) throw err;
       res.json({
         status: res.statusCode,

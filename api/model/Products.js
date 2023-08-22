@@ -18,7 +18,7 @@ class Products{
         const query = `
             SELECT prodID, prodName, quantity, amount, Category, prodUrl 
             FROM Products 
-            WHERE prodID = ${req.body, req.params.prodID}
+            WHERE prodID = ${req.params.prodID}
         `
         db.query(query, (err, result)=>{
             if (err) throw err
@@ -44,7 +44,7 @@ class Products{
         const query = `
             DELETE FROM Products WHERE prodID = ${req.params.prodID}
         `
-        db.query(query, [req.body, req.params.prodID], (err)=>{
+        db.query(query, [req.params.prodID], (err)=>{
             if (err) throw err
             res.json({
                 status: res.statusCode,

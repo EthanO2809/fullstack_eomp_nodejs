@@ -28,7 +28,7 @@ routes.delete("/user/:id", bodyParser.json(), (req, res) => {
 routes.get("/Products", (req, res) => {
   products.fetchProducts(req, res);
 });
-routes.get("/Products/:ProdID", (req, res) => {
+routes.get("/Products/:prodID", (req, res) => {
   products.fetchProduct(req, res);
 });
 routes.post("/Products", bodyParser.json(), (req, res) => {
@@ -37,7 +37,7 @@ routes.post("/Products", bodyParser.json(), (req, res) => {
 routes.patch("/Products", bodyParser.json(), (req, res) => {
   products.updateProduct(req, res);
 });
-routes.delete("/Products/:ProdID", (req, res) => {
+routes.delete("/Products/:prodID", (req, res) => {
   products.removeProduct(req, res);
 });
 

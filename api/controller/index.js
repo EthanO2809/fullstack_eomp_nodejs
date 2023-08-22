@@ -25,19 +25,19 @@ routes.delete("/user/:id", bodyParser.json(), (req, res) => {
 // =======
 //import all model's objects
 
-routes.get("/Products", (req, res) => {
+routes.get("/product", (req, res) => {
   products.fetchProducts(req, res);
 });
-routes.get("/Products/:prodID", (req, res) => {
+routes.get("/product/:prodID", (req, res) => {
   products.fetchProduct(req, res);
 });
-routes.post("/Products", bodyParser.json(), (req, res) => {
+routes.post("/product", bodyParser.json(), (req, res) => {
   products.addProduct(req, res);
 });
-routes.patch("/Products/:prodID", bodyParser.json(), (req, res) => {
+routes.patch("/product/:prodID", bodyParser.json(), (req, res) => {
   products.updateProduct(req, res);
 });
-routes.delete("/Products/:prodID", (req, res) => {
+routes.delete("/product/:prodID", (req, res) => {
   products.removeProduct(req, res);
 });
 

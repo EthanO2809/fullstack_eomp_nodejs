@@ -26,7 +26,7 @@
     </div>
   </a>
   <a href="/products" class="card1">
-    <div class="card__bg1" style="background-image: url(https://i.postimg.cc/nzwsvhVP/slipstream-hi-heritage-2499.jpg)"></div>
+    <div class="card__bg1" style="background-image: url(https://i.postimg.cc/WzgnQyBP/mercurial-superfly.webp)"></div>
     <div class="card__content1">
       <h3 class="card__heading1 text-white"></h3>
     </div>

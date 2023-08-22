@@ -39,9 +39,9 @@
             <div class="footer-social-icon">
                 <span>Follow us</span>
                 <br>
-                <a href="https://www.facebook.com/pottersworkCT/" target="_blank"><img src="https://i.postimg.cc/QMwWNNN2/icons8-facebook-150.png" loading="lazy" alt="facebook" class="facebook"></a>
-                <a href="https://www.instagram.com/potterswork/" target="_blank"><img src="https://i.postimg.cc/gcRBWnkP/icons8-instagram-150.png" loading="lazy" alt="instagram" class="instagram"></a>
-                <a href="https://twitter.com/LaiquahC" target="_blank"><img src="https://i.postimg.cc/63bF9JwS/icons8-twitter-150.png" loading="lazy" alt="twitter" class="twitter"></a> <br>
+                <a href="https://www.facebook.com/pottersworkCT/" id="media" target="_blank"><img src="https://i.postimg.cc/QMwWNNN2/icons8-facebook-150.png" loading="lazy" alt="facebook" class="facebook"></a>
+                <a href="https://www.instagram.com/potterswork/"  id="media" target="_blank"><img src="https://i.postimg.cc/gcRBWnkP/icons8-instagram-150.png" loading="lazy" alt="instagram" class="instagram"></a>
+                <a href="https://twitter.com/LaiquahC" target="_blank" id="media"><img src="https://i.postimg.cc/63bF9JwS/icons8-twitter-150.png" loading="lazy" alt="twitter" class="twitter"></a> <br>
             </div>
             <div class="copyright">
                 <p class="copyright">Sole Cartel © 2023</p>
@@ -71,6 +71,10 @@
     float: right;
   }
   
+  #media{
+    margin:5px;
+  }
+
   .footer h3 {
     margin-top:0;
     margin-bottom:12px;

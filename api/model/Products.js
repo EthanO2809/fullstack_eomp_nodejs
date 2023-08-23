@@ -44,7 +44,7 @@ class Products{
         const query = `
             DELETE FROM Products WHERE prodID = ${req.params.prodID}
         `
-        db.query(query, [req.params.prodID], (err)=>{
+        db.query(query, (err)=>{
             if (err) throw err
             res.json({
                 status: res.statusCode,
@@ -56,7 +56,7 @@ class Products{
         const query = `
             UPDATE Products SET ? WHERE prodID = ${req.params.prodID}
         `
-        db.query(query, [req.body, req.params.prodID], (err)=>{
+        db.query(query, [req.body], (err)=>{
             if (err) throw err
             res.json({
                 status: res.statusCode,

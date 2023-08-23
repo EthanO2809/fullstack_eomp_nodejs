@@ -22,7 +22,7 @@ export default createStore({
     },
     setProducts(state, products) {
       state.products = products;
-      console.log(products)
+      console.log(products);
     },
     setProduct(state, product) {
       state.product = product;
@@ -70,61 +70,74 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async createUser(context) {
-      try{
-        const { data } = await axios.post(`${miniURL}user`)
-        context.commit("setUser", data.results);
-      } catch (e) {
-        context.commit("setMsg", "an error occured");
-      }
-    },
-    async updateUser(context) {
-      try{
-        const { data } = await axios.patch(`${miniURL}user`)
-        context.commit("setUser", data.results);
-      } catch (e) {
-        context.commit("setMsg", "an error occured");
-      }
-    },
-    async deleteUser(context) {
-      try{
-        const { data } = await axios.delete(`${miniURL}user`)
-        context.commit("setUser", data.results);
-      } catch (e) {
-        context.commit("setMsg", "an error occured");
-      }
-    },
-    async createProduct(context, payload) {
-      console.log("REACHED")
-      try{
-        const { res } = await axios.post(`${miniURL}product`, payload)
-        const {results, err} = await res.data
-        if(results){
-          context.commit('setProduct', results[0])
+    async registerUser(context) {
+        console.log("REACHED");
+      try {
+        const { res } = await axios.post(`${miniURL}user`, payload);
+        const { results, err } = await res.data;
+        if (results) {
+          context.commit("setUser", results[0]);
           context.commit("setSpinner", false);
-        } else{
-          context.commit('setMsg', msg)
+        } else {
+          context.commit("setMsg", msg);
         }
       } catch (e) {
-        context.commit("setMsg", "an error occured")
+        context.commit("setMsg", "an error occured");
+      }
+    },
+    
+    async updateUser(context) {
+      try {
+        const { data } = await axios.patch(`${miniURL}user`);
+        context.commit("setUser", data.results);
+      } catch (e) {
+        context.commit("setMsg", "an error occured");
+      }
+    },
+    async deleteUser(context, prodID) {
+      try {
+        const { res } = await axios.delete(`${miniURL}user`);
+        context.commit("setUser", data.results);
+      } catch (e) {
+        context.commit("setMsg", "an error occured");
+      }
+    },
+    async addProduct(context, payload) {
+      console.log("REACHED");
+      try {
+        const { res } = await axios.post(`${miniURL}product`, payload);
+        const { results, err } = await res.data;
+        if (results) {
+          context.commit("setProduct", results[0]);
+          context.commit("setSpinner", false);
+        } else {
+          context.commit("setMsg", msg);
+        }
+      } catch (e) {
+        context.commit("setMsg", "an error occured");
       }
     },
     async updateProduct(context) {
-      try{
-        const { data } = await axios.patch(`${miniURL}product`)
-        context.commit("setProduct", data.results)
-      } catch (e) {
-        context.commit("setMsg", "an error occured")
-      }
-    },
-    async deleteProduct(context) {
-      try{
-        const { data } = await axios.delete(`${miniURL}product`)
+      try {
+        const { data } = await axios.patch(`${miniURL}product`);
         context.commit("setProduct", data.results);
       } catch (e) {
-        context.commit("setMsg", "an error occured")
+        context.commit("setMsg", "an error occured");
       }
-    }
+    },
+    async removeProduct(context, prodID) {
+      try {
+        const { res } = await axios.delete(`${miniURL}product/${prodID}`);
+        const { msg, err } = await res.data;
+        if (msg) {
+          context.commit("setProduct", msg);
+        } else {
+          context.commit("setMsg", err);
+        }
+      } catch (e) {
+        context.commit("setMsg", "an error occured");
+      }
+    },
   },
   modules: {},
 });

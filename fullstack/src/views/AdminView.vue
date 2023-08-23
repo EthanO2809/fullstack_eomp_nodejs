@@ -1,7 +1,7 @@
 <template>
     <div>
 <h1>Users Table</h1>
-<br>
+<AddUser/>
 <table class="table">
     <thead>
         <tr>
@@ -21,7 +21,7 @@
             <td>{{ user.userAge }}</td>
             <td>{{ user.emailAdd }}</td>
             <td><img :src="user.userProfile" :alt="user.firstName" loading="lazy" class="img-fluid image"></td>
-            <td><button class="edit">edit</button><button class="del">delete</button></td> 
+            <td><button class="edit">edit</button><button class="del" >delete</button></td> 
         </tr>
         <tr v-else>
             <Spinner/>
@@ -51,7 +51,7 @@
         <td>R {{ product.amount }}</td>
         <td>{{ product.Category }}</td>
         <td><img :src="product.prodUrl" :alt="product.prodName" class="img-fluid image" loading="lazy"></td>
-        <td><button class="edit">edit</button><button class="del">delete</button></td>
+        <td><button class="edit">edit</button><button class="del" @click="remveProduct(product.prodID)">delete</button></td>
       </tr>
       <tr v-else>
         <Spinner/>
@@ -64,10 +64,12 @@
 <script>
 import Spinner from '../components/Spinner.vue'
 import AddProducts from '../components/AddProducts.vue'
+import AddUser from '../components/AddUser.vue'
     export default {
         components:{
             Spinner,
-            AddProducts
+            AddProducts,
+            AddUser
         },
         computed: {
         users() {
@@ -81,6 +83,15 @@ import AddProducts from '../components/AddProducts.vue'
         this.$store.dispatch('fetchProduct')
         this.$store.dispatch('fetchUsers')
     },
+    methods: {
+        remveProduct(prodID){
+            console.log("deleted...");
+            this.$store.dispatch("removeProduct", prodID )
+            setTimeout(()=>{
+                location.reload()
+            }, 500)
+        }
+    }
     }
 </script>
 

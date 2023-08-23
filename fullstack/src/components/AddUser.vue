@@ -31,29 +31,52 @@
           </div>
           <div class="modal-body">
             <input
-              placeholder="Users Name"
+              placeholder="Name"
               type="text"
               v-model="model.user.firstName "
+              required
             />
             <input
-              placeholder="Users Surname"
+              placeholder="Surname"
               type="text"
               v-model="model.user.lastName"
+              required
             />
             <input
               placeholder="Age"
-              type="text"
+              type="number"
               v-model="model.user.userAge"
+              required
+            />
+            <input
+              placeholder="Gender"
+              type="number"
+              v-model="model.user.gender"
+              required
+            />
+            <input
+              placeholder="Role"
+              type="text"
+              v-model="model.user.userRole"
+              required
+            />
+            <input
+              placeholder="Role"
+              type="text"
+              v-model="model.user.userPass"
+              required
             />
             <input
               placeholder="Email"
-              type="text"
+              type="email"
               v-model="model.user.emailAdd"
+              required
             />
             <input
               placeholder="Profile Picture"
               type="text"
               v-model="model.user.userProfile"
+              required
             />
           </div>
           <div class="modal-footer">
@@ -81,8 +104,11 @@ export default {
             firstName: "",
             lastName: "",
             userAge: "",
-            emailAdd : "",
-            userProfile: "",
+            gender:"",
+            userRole:"",
+            userPass:"",
+            userProfile:"",
+            emailAdd : ""
         },
       },
     };
@@ -91,6 +117,7 @@ export default {
     registerUser() {
       console.log("reached");
       this.$store.dispatch("registerUser", this.model.user);
+      console.log("Dispatched registerUser action")
       setTimeout(() => {
         location.reload();
       }, 500);

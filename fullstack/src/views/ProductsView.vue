@@ -8,8 +8,9 @@
                 <div class="card" style="width: 18rem;">
                     <img :src="product.prodUrl" class="card-img-top" :alt="product.prodName">
                     <div class="card-body">
-                      <h5 class="card-title">{{ product.prodName }} <br> R {{ product.amount }}</h5>    
-                      <p class="card-text"><span>Category: {{ product.Category }}</span></p>
+                        <button class="view">View More</button>
+                       <h5 class="card-title">{{ product.prodName }} <br> R {{ product.amount }}</h5>    
+                      <!--<p class="card-text"><span>Category: {{ product.Category }}</span></p> -->
                     </div>
                   </div>
             </div>
@@ -28,11 +29,11 @@ import Spinner from "../components/Spinner.vue"
         },
         computed: {
             product() {
-                return this.$store.state.product
+                return this.$store.state.products
             }
         },
         mounted() {
-            this.$store.dispatch('fetchProduct')
+            this.$store.dispatch('fetchProducts')
         }
     }
 
@@ -45,5 +46,10 @@ import Spinner from "../components/Spinner.vue"
 }
 .card{
     margin-bottom:1rem ;
+}
+
+.view{
+    width: 6rem;
+    height: 2rem;
 }
 </style>

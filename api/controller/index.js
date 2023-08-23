@@ -24,8 +24,7 @@ routes.delete("/user/:id", bodyParser.json(), (req, res) => {
 });
 // =======
 //import all model's objects
-ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
-routes.get("/product", (req, res) => {
+routes.get("/products", (req, res) => {
   products.fetchProducts(req, res);
 });
 routes.get("/product/:prodID", (req, res) => {

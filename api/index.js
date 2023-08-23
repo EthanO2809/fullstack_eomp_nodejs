@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 })
 
 routes.get("^/$|/Full-Stack EOMP - NodeJS", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./index.js"));
+    res.sendFile(path.resolve(__dirname, "./static/html/index.html"));
   }
 );
 

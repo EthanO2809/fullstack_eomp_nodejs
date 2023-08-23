@@ -87,10 +87,10 @@ class Users {
     db.query(query, [data], (err) => {
       if (err) throw err;
       let token = createToken(user);
-      res.cookie("LegitUser", token, {
-        expires: new Date(Date.now() + 259200000),
-        httpOnly: true,
-      });
+      // res.cookie("LegitUser", token, {
+      //   expires: new Date(Date.now() + 259200000),
+      //   httpOnly: true,
+      // });
       res.json({
         status: res.statusCode,
         msg: "User registered successfully",
@@ -99,9 +99,9 @@ class Users {
   }
   removeUser(req, res) {
     const query = `
-            DELETE FROM Users WHERE UserID = ${req.params.UserID}
+            DELETE FROM Users WHERE UserID = ${req.params.userID}
         `;
-    db.query(query, [req.params.UserID], (err) => {
+    db.query(query, (err) => {
       if (err) throw err;
       res.json({
         status: res.statusCode,
@@ -111,9 +111,9 @@ class Users {
   }
   updateUser(req, res) {
     const query = `
-            UPDATE Users SET ? WHERE UserID = ${req.params.UserID}
+            UPDATE Users SET ? WHERE UserID = ${req.params.userID}
         `;
-    db.query(query, [req.body, req.params.UserID], (err) => {
+    db.query(query, [req.body], (err) => {
       if (err) throw err;
       res.json({
         status: res.statusCode,

@@ -3,7 +3,7 @@
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn"
       data-bs-toggle="modal"
       data-bs-target="#exampleModal2"
     >
@@ -128,4 +128,12 @@ export default {
 </script>
 
 <style scoped>
+.btn{
+  border: 1px solid black;
+  margin-bottom: 7px;
+}
+
+.btn:hover{
+color: rgb(126, 126, 126);
+}
 </style>

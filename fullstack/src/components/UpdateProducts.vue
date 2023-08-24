@@ -1,15 +1,139 @@
 <template>
-    <div>
-
+  <div>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      @click="openEditModal(product.prodID)"
+      data-bs-toggle="modal"
+      :data-bs-target="'#exampleModal' + product.prodID"
+    >
+      Update Products
+    </button>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      :id="'exampleModal' + product.prodID"
+      tabindex="-1"
+      :aria-labelledby="'exampleModalLabel' + product.prodID"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Update Products
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input
+              placeholder="product Name"
+              type="text"
+              v-model="editingProduct.prodName"
+              required
+            />
+            <input
+              placeholder="quantity"
+              type="number"
+              v-model="editingProduct.quantity"
+              required
+            />
+            <input
+              placeholder="amount"
+              type="number"
+              v-model="editingProduct.amount"
+              required
+            />
+            <input
+              placeholder="category"
+              type="text"
+              v-model="editingProduct.Category"
+              required
+            />
+            <input
+              placeholder="product image"
+              type="text"
+              v-model="editingProduct.prodUrl"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="updateProduct(product.prodID)"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {
+  props: ["product"],
+  data() {
+    return {
+        editingProduct:{
+        product: {
+          prodName: "",
+          quantity: 0,
+          amount: 0,
+          category: "",
+          prodUrl: "",
+        },
+      },
+    };
+  },
+  computed: {
+    thisProduct() {
+      return this.$store.state.product;
+    },
+  },
+  methods: {
+    openEditModal(prodID) {
+      this.editingProductID = prodID;
+      this.editingProduct = {
+        ...this.$store.state.products.find(
+          (product) => product.prodID === prodID
+        ),
+      };
+    },
+    updateProduct(prodID) {
+      this.$store
+        .dispatch("updateProduct", {
+          prodID: prodID,
+          ...this.editingProduct,
+        })
+        .then(() => {
+          console.log("product successfully updated");
+          setTimeout(() => {
+            location.reload();
+          }, 500);
+        })
+        .catch((err) => {
+          console.error("Error while updating: ", err);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 </style>

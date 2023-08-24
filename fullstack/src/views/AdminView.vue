@@ -1,8 +1,29 @@
 <template>
   <div>
+    <!--buttons and search -->
+    <div id="all_buttons_display">
+      <!-- filter -->
+      <div class="dropdown">
+      <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sort</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Name</a></li>
+        <li><a class="dropdown-item" href="#">Price</a></li>
+      </ul>
+  </div>
+    <!-- sort -->
+    <div class="dropdown1">
+      <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Sneakers</a></li>
+        <li><a class="dropdown-item" href="#">Football Boots</a></li>
+      </ul>
+    </div>
+  </div>
+  <br>
     <h1>Users Table</h1>
     <AddUser />
-    <table class="table">
+    <center>
+    <table class="table table-bordered border-black text-center">
       <thead>
         <tr>
           <th>Name</th>
@@ -41,10 +62,12 @@
         </tr>
       </tbody>
     </table>
+  </center>
 
     <h1>Products Table</h1>
     <AddProducts />
-    <table class="table">
+    <center>
+      <table class="table table-bordered border-black text-center">
       <thead>
         <tr>
           <th>ID</th>
@@ -56,7 +79,7 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody v-for="product in product" :key="product">
+      <tbody v-for="product in products" :key="product.prodID">
         <tr v-if="product">
           <td>{{ product.prodID }}</td>
           <td>{{ product.prodName }}</td>
@@ -72,8 +95,8 @@
             />
           </td>
           <td>
-            <button class="edit">edit</button
-            ><button class="del" @click="remveProduct(product.prodID)">
+            <UpdateProducts :product="product"/>
+            <button class="del" @click="remveProduct(product.prodID)">
               delete
             </button>
           </td>
@@ -83,6 +106,7 @@
         </tr>
       </tbody>
     </table>
+  </center>
   </div>
 </template>
 
@@ -90,19 +114,27 @@
 import Spinner from "../components/Spinner.vue";
 import AddProducts from "../components/AddProducts.vue";
 import AddUser from "../components/AddUser.vue";
+import UpdateProducts from '../components/UpdateProducts.vue'
 export default {
   components: {
     Spinner,
     AddProducts,
     AddUser,
+    UpdateProducts
   },
   computed: {
     users() {
       return this.$store.state.users;
     },
     product() {
-      return this.$store.state.products;
+      return this.$store.state.product;
     },
+    products(){
+      return this.$store.state.products
+    },
+    user(){
+      return this.$store.state.user
+    }
   },
   mounted() {
     this.$store.dispatch('fetchProducts');
@@ -144,5 +176,19 @@ img {
   width: 4rem;
   border-radius: 5px;
   background-color: rgb(255, 129, 129);
+}
+
+
+
+table {
+  border: 1px solid black;
+  width: 90%;
+}
+
+.dropdown{
+  float: left;
+}
+.dropdown1{
+  float: right;
 }
 </style>

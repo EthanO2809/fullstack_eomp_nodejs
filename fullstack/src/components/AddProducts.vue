@@ -104,4 +104,12 @@ export default {
   
 
 <style scoped>
+.btn{
+  border: 1px solid black;
+  margin-bottom: 7px;
+}
+
+.btn:hover{
+color: rgb(126, 126, 126);
+}
 </style>

@@ -7,7 +7,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <router-link to="/">Home</router-link>
               </li>
@@ -24,10 +24,6 @@
                 <router-link to="/contact">Contact</router-link>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn search" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </nav>

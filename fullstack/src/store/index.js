@@ -11,11 +11,15 @@ export default createStore({
     spinner: null,
     token: null,
     msg: null,
+    chosenProduct: null
   },
   getters: {},
   mutations: {
     setUsers(state, users) {
       state.users = users;
+    },
+    setSingleProduct(state, product){
+      state.chosenProduct = product
     },
     setUser(state, user) {
       state.user = user;
@@ -131,10 +135,16 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async updateProduct(context) {
+    async updateProduct(context, payload) {
       try {
-        const { data } = await axios.patch(`${miniURL}product`);
-        context.commit("setProduct", data.results);
+        const res = await axios.patch(`${miniURL}product/${payload.prodID}`, payload);
+        const { msg, err } = res.data
+        if(msg){
+          context.commit("setProduct", msg)
+        }
+        if(err){
+          context.commit("setMsg", err)
+        }
       } catch (e) {
         context.commit("setMsg", "an error occured");
       }

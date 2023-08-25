@@ -5,6 +5,7 @@
     <p class="mb-5 abouttxt fs-5">{{ aboutText }}</p>
     </div>
     <h2 class="fs-1 fw-bolder mb-5 mt-5 text-decoration-underline">Meet Our Team</h2>
+    
     <div class="row rows">
       <div class="col-6 flex">
       <!-- Card01 -->
@@ -127,13 +128,11 @@ export default {
 <style scoped>
 /* Add your CSS styles here */
 .about{
-  font-family: "Poppins", sans-serif;
   font-weight: bold;
 }
 
 .abouttxt{
   width: 90%;
-  margin-top: 14px;
   margin-bottom: 200px !important;
   text-align: left;
   font-size: 26px !important;

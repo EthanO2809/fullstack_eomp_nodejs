@@ -50,9 +50,9 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async fetchUser(context, id) {
+    async fetchUser(context) {
       try {
-        const { data } = await axios.get(`${miniURL}user/${id}`);
+        const { data } = await axios.get(`${miniURL}user`);
         context.commit("setUser", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -66,9 +66,9 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async fetchProduct(context, id) {
+    async fetchProduct(context) {
       try {
-        const { data } = await axios.get(`${miniURL}product/${id}`);
+        const { data } = await axios.get(`${miniURL}product`);
         context.commit("setProduct", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -104,8 +104,7 @@ export default createStore({
         const { res } = await axios.patch(`${miniURL}user/${payload.UserID}`, payload);
         const {msg, err} = res.data
         if(msg){
-          context.commit("setMsg", msg)
-          context.dispatch('fetchUsers')
+          context.commit("setUser", msg)
         }
         if(err){
           context.commit("setMsg", err)
@@ -114,13 +113,13 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async deleteUser(context, id) {
+    async deleteUser(context, UserID) {
       try {
-        const res = await axios.delete(`${miniURL}user/${id}`);
+        const res = await axios.delete(`${miniURL}user/${UserID}`);
         if(res.status === 200){
           context.commit('setUser', res.data.msg)
         } else{
-          context.commit('setMsg', "an error occured, please tru again")
+          context.commit('setMsg', "an error occured, please try again")
         }
       } catch (e) {
         console.error('Error while deleting user: ', e)

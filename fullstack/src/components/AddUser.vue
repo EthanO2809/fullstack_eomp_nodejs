@@ -30,6 +30,7 @@
             ></button>
           </div>
           <div class="modal-body">
+            <center>
             <input
               placeholder="Name"
               type="text"
@@ -50,20 +51,14 @@
             />
             <input
               placeholder="Gender"
-              type="number"
-              v-model="model.user.gender"
+              type="text"
+              v-model="model.user.Gender"
               required
             />
             <input
               placeholder="Role"
               type="text"
               v-model="model.user.userRole"
-              required
-            />
-            <input
-              placeholder="Role"
-              type="text"
-              v-model="model.user.userPass"
               required
             />
             <input
@@ -78,6 +73,8 @@
               v-model="model.user.userProfile"
               required
             />
+          </center>
+
           </div>
           <div class="modal-footer">
             <button
@@ -104,9 +101,8 @@ export default {
             firstName: "",
             lastName: "",
             userAge: "",
-            gender:"",
+            Gender:"",
             userRole:"",
-            userPass:"",
             userProfile:"",
             emailAdd : ""
         },
@@ -135,5 +131,12 @@ export default {
 
 .btn:hover{
 color: rgb(126, 126, 126);
+}
+
+input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7px;
 }
 </style>

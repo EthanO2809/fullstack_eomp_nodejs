@@ -6,22 +6,22 @@
       class="btn btn-primary"
       @click="openEditModal(product.prodID)"
       data-bs-toggle="modal"
-      :data-bs-target="'#eexampleModal' + product.prodID"
+      :data-bs-target="'#exampleModal' + product.prodID"
     >
-      Update
+      Update Products
     </button>
     <!-- Modal -->
     <div
       class="modal fade"
-      :id="'eexampleModal' + product.prodID"
+      :id="'exampleModal' + product.prodID"
       tabindex="-1"
-      :aria-labelledby="'eexampleModalLabel' + product.prodID"
+      :aria-labelledby="'exampleModalLabel' + product.prodID"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="eexampleModalLabel">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
               Update Products
             </h1>
             <button
@@ -53,7 +53,7 @@
             <input
               placeholder="category"
               type="text"
-              v-model="editingProduct.category"
+              v-model="editingProduct.Category"
               required
             />
             <input
@@ -91,13 +91,15 @@ export default {
   data() {
     return {
         editingProduct:{
+        product: {
           prodName: "",
           quantity: 0,
           amount: 0,
           category: "",
           prodUrl: "",
         },
-      };
+      },
+    };
   },
   computed: {
     thisProduct() {
@@ -121,6 +123,9 @@ export default {
         })
         .then(() => {
           console.log("product successfully updated");
+          setTimeout(() => {
+            location.reload();
+          }, 500);
         })
         .catch((err) => {
           console.error("Error while updating: ", err);
@@ -131,5 +136,28 @@ export default {
 </script>
 
 <style scoped>
+input{
+  border-radius: 5px ;
+  margin-bottom: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.btn{
+  border: 1px solid black;
+  margin-bottom: 7px;
+  background-color: white;
+  color: black;
+}
+
+.btn:hover{
+color: rgb(126, 126, 126);
+}
+input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7px;
+}
 </style>

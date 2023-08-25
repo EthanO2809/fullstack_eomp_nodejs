@@ -173,11 +173,20 @@ img {
 
 
 .del {
-  width: 4rem;
+  width: 5rem;
   border-radius: 5px;
   background-color: rgb(255, 129, 129);
 }
 
+.btn{
+  border: 1px solid black;
+  margin-bottom: 7px;
+  width: 5rem;
+}
+
+.btn:hover{
+color: rgb(126, 126, 126);
+}
 
 
 table {

@@ -112,4 +112,10 @@ export default {
 .btn:hover{
 color: rgb(126, 126, 126);
 }
+input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7px;
+}
 </style>

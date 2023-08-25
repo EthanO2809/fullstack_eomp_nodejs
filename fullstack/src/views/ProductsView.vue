@@ -1,15 +1,15 @@
 <template>
     <div class="prods">
-        <form class="d-flex mb-5 mt-4" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn search" type="submit">Search</button>
-          </form>
-  <div class="container">
-    <div class="row mb-2">
-      <h2 class="class-display2 fs-1 mb-5">Products</h2>
+      <div class="row mb-2">
+    <form class="d-flex mb-5 mt-4 search" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn search" type="submit">Search</button>
+      </form>
     </div>
-    <div class="row justify-content-center gap-6" v-if="products">
-        <div class="col-3" v-for="productItem in products" :key="productItem.prodID">
+      <div class="container">
+      <h2 class="class-display2 fs-1 mb-5">Products</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 justify-content-center gap-6" v-if="products">
+        <div class="col" v-for="productItem in products" :key="productItem.prodID">
         <div
             class="card"
             style="width: 18rem"
@@ -70,13 +70,10 @@ export default {
 </script>
 
 <style scoped>
-.prods{
-  font-family: "Poppins", sans-serif;
-}
 
 .form-control{
   width: 16rem;
-  margin-left: 70rem;
+
 }
 
 .card-img-top {

@@ -6,22 +6,22 @@
         class="btn btn-primary"
         @click="openEditModal(user.UserID)"
         data-bs-toggle="modal"
-        :data-bs-target="'#exampleModall' + user.UserID"
+        :data-bs-target="'#pexampleModal' + user.UserID"
       >
         Update Users
       </button>
       <!-- Modal -->
       <div
         class="modal fade"
-        :id="'pexampleModal' + user.id"
+        :id="'pexampleModal' + user.UserID"
         tabindex="-1"
-        :aria-labelledby="'pexampleModalLabell' + user.UserID"
+        :aria-labelledby="'pexampleModalLabel' + user.UserID"
         aria-hidden="true"
       >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="pexampleModalLabell">
+              <h1 class="modal-title fs-5" id="pexampleModalLabel">
                 Update Users
               </h1>
               <button
@@ -32,7 +32,8 @@
               ></button>
             </div>
             <div class="modal-body">
-              <input
+                <center>
+                  <input
                 placeholder="First Name"
                 type="text"
                 v-model="editingUser.firstName"
@@ -74,6 +75,8 @@
                 v-model="editingUser.userProfile"
                 required
               />
+            </center>
+
             </div>
             <div class="modal-footer">
               <button
@@ -123,7 +126,7 @@
       openEditModal(UserID) {
         this.editingUserID = UserID;
         this.editingUser = {
-          ...this.$store.state.user.find(
+          ...this.$store.state.users.find(
             (user) => user.UserID === UserID
           ),
         };
@@ -163,4 +166,10 @@
   color: rgb(126, 126, 126);
   }
   
+  input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 7px;
+  }
   </style>

@@ -6,8 +6,8 @@
     </div>
     <h2 class="fs-1 fw-bolder mb-5 mt-5 text-decoration-underline">Meet Our Team</h2>
     
-    <div class="row rows">
-      <div class="col-6 flex">
+    <div class="row row-cols-1 row-cols-sm-2 d-flex justify-content-center rows">
+      <div class="col flex">
       <!-- Card01 -->
       <div class="card-client">
     <div class="user-picture">
@@ -47,7 +47,7 @@
 </div>
     </div>
     
-    <div class="col-6 flex">
+    <div class="col flex">
     <div class="card-client">
     <div class="user-picture">
         <img src="https://i.postimg.cc/x8ZCBY6B/IMG-9863.jpg" alt="" class="img-02">
@@ -131,6 +131,7 @@ export default {
   font-weight: bold;
 }
 
+
 .abouttxt{
   width: 90%;
   margin-bottom: 200px !important;
@@ -180,11 +181,11 @@ export default {
   left: 12.4%;
 }
 
-.row{
+/*.row{
   width: 60%;
   position: relative;
   left: 20%;
-}
+}*/
 
 .flex{
   display: flex;

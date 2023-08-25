@@ -79,7 +79,7 @@ export default createStore({
         console.log(payload)
       try {
         console.log("payload: ", payload)
-        const { res } = await axios.post(`${miniURL}register`, payload);
+        const res = await axios.post(`${miniURL}register`, payload);
         console.log(res.data)
         const { results, err } = await res.data;
         console.log(results, err) 

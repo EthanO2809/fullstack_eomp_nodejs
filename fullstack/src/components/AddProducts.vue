@@ -30,6 +30,7 @@
             ></button>
           </div>
           <div class="modal-body">
+            <center>
             <input
               placeholder="product Name"
               type="text"
@@ -60,6 +61,7 @@
               v-model="model.product.prodUrl"
               required
             />
+          </center>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">

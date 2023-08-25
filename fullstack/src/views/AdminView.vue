@@ -55,7 +55,7 @@
           </td>
           <td>
           <UpdateUser :user="user"/>  
-            <button class="del" @click="remveUser(user.userID)">delete</button>
+            <button class="del" @click="remveUser(user.UserID)">delete</button>
           </td>
         </tr>
         <tr v-else>
@@ -154,10 +154,10 @@ export default {
         location.reload();
       }, 500);
     },
-    async remveUser(id) {
+    async remveUser(UserID) {
       console.log("deleted...");
       try {
-        await this.$store.dispatch("deleteUser", id);
+        await this.$store.dispatch("deleteUser", UserID);
       } catch (e) {
         console.error("An error occured: ", e);
       }

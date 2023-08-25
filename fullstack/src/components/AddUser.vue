@@ -5,7 +5,7 @@
       type="button"
       class="btn"
       data-bs-toggle="modal"
-      data-bs-target="#exampleModal2"
+      data-bs-target="#pexampleModal2"
     >
       Add A User
     </button>
@@ -13,15 +13,15 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal2"
+      id="pexampleModal2"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel2"
+      aria-labelledby="pexampleModalLabel2"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel2">Add A User</h1>
+            <h1 class="modal-title fs-5" id="pexampleModalLabel2">Add A User</h1>
             <button
               type="button"
               class="btn-close"
@@ -59,6 +59,12 @@
               placeholder="Role"
               type="text"
               v-model="model.user.userRole"
+              required
+            />
+            <input
+              placeholder="Role"
+              type="text"
+              v-model="model.user.userPass"
               required
             />
             <input
@@ -103,6 +109,7 @@ export default {
             userAge: "",
             Gender:"",
             userRole:"",
+            userPass:"",
             userProfile:"",
             emailAdd : ""
         },

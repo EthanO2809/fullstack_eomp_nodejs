@@ -93,8 +93,8 @@ export default {
         editingProduct:{
         product: {
           prodName: "",
-          quantity: 0,
-          amount: 0,
+          quantity: null,
+          amount: null,
           category: "",
           prodUrl: "",
         },

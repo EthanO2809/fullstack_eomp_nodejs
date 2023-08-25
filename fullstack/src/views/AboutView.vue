@@ -88,13 +88,16 @@
     </div>
 
     <div class="row mr">
-    <div class="col-6">
-    <h2 class="text-start fs-1 fw-bolder services">Our Services</h2>
-    <p class="servicestxt text-start fs-2">Welcome to Sole Cartel Sneaker Store, where sneaker culture comes to life. Our store is a haven for sneaker enthusiasts, collectors, and fashion-forward individuals who share a passion for the latest kicks and timeless classics. Our shelves are adorned with an extensive collection of sneakers, showcasing sought-after releases from top brands alongside iconic designs that have left their mark on the sneaker world.</p>
-    </div>
-    <div class="col-6">
+    <div class="col">
+      <center>
+    <h2 class="text-center f1 fw-bolder services">Our Services</h2>
+    <p class="servicestxt ">Welcome to Sole Cartel Sneaker Store, where sneaker culture comes to life. Our store is a haven for sneaker enthusiasts, collectors, and fashion-forward individuals who share a passion for the latest kicks and timeless classics. Our shelves are adorned with an extensive collection of sneakers, showcasing sought-after releases from top brands alongside iconic designs that have left their mark on the sneaker world.</p>
+  </center>  
+  </div>
+
+    <!-- <div class="col-6">
       <img src="https://i.postimg.cc/BbBMMXvS/Adidas-Brand-Centre-1024x682.jpg" alt="" class="img-03">
-    </div>
+    </div> -->
     </div>
     <div class="officialsponsors">
       <h2 class="fs-1 fw-bold mb-4">Official Sponsors</h2>
@@ -147,13 +150,10 @@ export default {
   height: 20rem;
 }
 
-.services{
- margin-right: 400px !important;
- text-align: start !important;
-}
+
 
 .servicestxt{
-  text-align: start !important;
+ 
   font-size: 20px !important;
   font-weight: 500;
   margin-bottom: 200px !important;

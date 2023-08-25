@@ -5,7 +5,7 @@
       type="button"
       class="btn"
       data-bs-toggle="modal"
-      data-bs-target="#pexampleModal2"
+      data-bs-target="#exampleModal2"
     >
       Add A User
     </button>
@@ -13,15 +13,15 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="pexampleModal2"
+      id="exampleModal2"
       tabindex="-1"
-      aria-labelledby="pexampleModalLabel2"
+      aria-labelledby="exampleModalLabel2"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="pexampleModalLabel2">Add A User</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel2">Add A User</h1>
             <button
               type="button"
               class="btn-close"
@@ -62,7 +62,7 @@
               required
             />
             <input
-              placeholder="Role"
+              placeholder="Password"
               type="text"
               v-model="model.user.userPass"
               required
@@ -119,8 +119,7 @@ export default {
   methods: {
     registerUser() {
       console.log("reached");
-      this.$store.dispatch("registerUser", this.model.user);
-      console.log("Dispatched registerUser action")
+      this.$store.dispatch("registerUser", this.model.user.UserID);
       setTimeout(() => {
         location.reload();
       }, 500);

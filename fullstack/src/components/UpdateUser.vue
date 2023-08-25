@@ -41,7 +41,7 @@
               />
               <input
                 placeholder="Last Name"
-                type="number"
+                type="text"
                 v-model="editingUser.lastName"
                 required
               />
@@ -58,13 +58,13 @@
                 required
               />
               <input
-                placeholder="category"
+                placeholder="Role"
                 type="text"
                 v-model="editingUser.userRole"
                 required
               />
               <input
-                placeholder="category"
+                placeholder="Email"
                 type="text"
                 v-model="editingUser.emailAdd"
                 required

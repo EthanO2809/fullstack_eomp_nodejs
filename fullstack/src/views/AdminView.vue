@@ -1,25 +1,6 @@
 <template>
   <div>
-    <!--buttons and search -->
-    <div id="all_buttons_display">
-      <!-- filter -->
-      <div class="dropdown">
-      <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sort</a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Name</a></li>
-        <li><a class="dropdown-item" href="#">Price</a></li>
-      </ul>
-  </div>
-    <!-- sort -->
-    <div class="dropdown1">
-      <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Sneakers</a></li>
-        <li><a class="dropdown-item" href="#">Football Boots</a></li>
-      </ul>
-    </div>
-  </div>
-  <br>
+   
     <h1>Users Table</h1>
     <AddUser />
     <center>
@@ -55,7 +36,7 @@
           </td>
           <td>
           <UpdateUser :user="user"/>  
-            <button class="del" @click="remveUser(user.UserID)">delete</button>
+            <button class="del" @click="deleteUser(user.UserID)">delete</button>
           </td>
         </tr>
         <tr v-else>
@@ -65,7 +46,25 @@
     </table>
   </div>
   </center>
+  <br>
 
+   <!--buttons and search -->
+   <div id="all_buttons_display">
+    <!-- filter -->
+    <div class="dropdown">
+    <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sort</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Name</a></li>
+      <li><a class="dropdown-item" href="#">Price</a></li>
+    </ul>
+</div>
+  <!-- sort -->
+  <div class="sort-dropdown">
+    <button class="btn" @click="refresh">Refresh</button>
+    <button class="btn1" @click="toggleSortDirection">
+      Filter by: {{ sort === "asc" ? "ascending" : "descending " }}
+    </button>
+  </div>
     <h1>Products Table</h1>
     <AddProducts />
     <center>
@@ -82,7 +81,7 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody v-for="product in products" :key="product.prodID">
+      <tbody v-for="product in filteredProducts" :key="product.prodID">
         <tr v-if="product">
           <td>{{ product.prodID }}</td>
           <td>{{ product.prodName }}</td>
@@ -112,6 +111,7 @@
   </div>
   </center>
   </div>
+  </div>
 </template>
 
 <script>
@@ -128,19 +128,41 @@ export default {
     UpdateProducts,
     UpdateUser
   },
+  data() {
+    return {
+      sort: "",
+      sortBy: "id",
+      sortMode: "prodID",
+    };
+  },
   computed: {
     users() {
-      return this.$store.state.users;
+      return this.$store.state.users || [];
+    },
+    products() {
+      return this.$store.state.products || [];
     },
     product() {
-      return this.$store.state.product;
+      return this.$store.state.product || [];
     },
-    products(){
-      return this.$store.state.products
+    user() {
+      return this.$store.state.user || [];
     },
-    user(){
-      return this.$store.state.user
-    }
+    filteredProducts() {
+      let filtered = [...this.products];
+      if (this.sortBy === "name") {
+        filtered = filtered.sort(
+          (a, b) =>
+            a.prodName.localeCompare(b.prodName) *
+            (this.sort === "asc" ? 1 : -1)
+        );
+      } else if (this.sortBy === "id") {
+        filtered = filtered.sort(
+          (a, b) => (this.sort === "asc" ? 1 : -1) * (a.prodID - b.prodID)
+        );
+      }
+      return filtered;
+    },
   },
   mounted() {
     this.$store.dispatch('fetchProducts');
@@ -154,12 +176,20 @@ export default {
         location.reload();
       }, 500);
     },
-    async remveUser(UserID) {
-      console.log("deleted...");
-      try {
-        await this.$store.dispatch("deleteUser", UserID);
-      } catch (e) {
-        console.error("An error occured: ", e);
+    refresh() {
+      this.sortBy = "id";
+    },
+    toggleSortDirection() {
+      console.log("reached");
+      this.sortBy = 'name'
+      this.sort = this.sort === "asc" ? "desc" : "asc";
+    },
+    deleteUser(userID) {
+      if (confirm("Are you sure you want to delete this user?")) {
+        this.$store.dispatch("deleteUser", userID);
+        setTimeout(() => {
+          location.reload();
+        }, 500);
       }
     },
   },
@@ -181,10 +211,21 @@ img {
 .btn{
   border: 1px solid black;
   margin-bottom: 7px;
-  width: 5rem;
 }
-
+.btn1{
+  float: right;
+  border: 1px solid black !important;
+  margin-bottom: 7px !important;
+  border-radius: 5px;
+  height: 2rem;
+  margin-top: 1rem;
+  background-color: white;
+  color: black;
+}
 .btn:hover{
+color: rgb(126, 126, 126);
+}
+.btn1:hover{
 color: rgb(126, 126, 126);
 }
 

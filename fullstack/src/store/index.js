@@ -47,7 +47,7 @@ export default createStore({
         const { data } = await axios.get(`${miniURL}users`);
         context.commit("setUsers", data.results);
       } catch (e) {
-        context.commit("setMsg", "an error occured");
+        context.commit("setMsg", "an error occurred");
       }
     },
     async fetchUser(context) {
@@ -55,7 +55,7 @@ export default createStore({
         const { data } = await axios.get(`${miniURL}user`);
         context.commit("setUser", data.results);
       } catch (e) {
-        context.commit("setMsg", "an error occured");
+        context.commit("setMsg", "an error occurred");
       }
     },
     async fetchProducts(context) {
@@ -63,7 +63,7 @@ export default createStore({
         const { data } = await axios.get(`${miniURL}products`);
         context.commit("setProducts", data.results);
       } catch (e) {
-        context.commit("setMsg", "an error occured");
+        context.commit("setMsg", "an error occurred");
       }
     },
     async fetchProduct(context) {
@@ -71,22 +71,20 @@ export default createStore({
         const { data } = await axios.get(`${miniURL}product`);
         context.commit("setProduct", data.results);
       } catch (e) {
-        context.commit("setMsg", "an error occured");
+        context.commit("setMsg", "an error occurred");
       }
     },
-    async registerUser(context, payload) {
+    async registerUser(context, user) {
         console.log("Starting registration process...");
-        console.log(payload)
+        console.log(user)
       try {
-        console.log("payload: ", payload)
-        const res = await axios.post(`${miniURL}register`, payload);
+        console.log("payload: ", user)
+        const res = await axios.post(`${miniURL}register`, user.UserID);
         console.log(res.data)
         const { results, err } = await res.data;
         console.log(results, err) 
         if (results) {
           console.log("User registered successfully:", results[0]); 
-          console.log(results)
-          console.log(results[0])
           context.commit("setUser", results[0]);
           context.commit("setSpinner", false);
         } else {

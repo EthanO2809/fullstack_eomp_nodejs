@@ -76,7 +76,7 @@ export default {};
 <style scoped>
 .title {
   color: white;
-  text-shadow: 4px 6px rgb(129, 126, 126);
+  text-shadow: 4px 4px rgb(129, 126, 126);
 }
 
 .bg {

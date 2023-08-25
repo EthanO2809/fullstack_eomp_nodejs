@@ -23,7 +23,8 @@
     <h1>Users Table</h1>
     <AddUser />
     <center>
-    <table class="table table-bordered border-black text-center">
+      <div class="table-responsive">
+    <table class="table table-bordered border-black text-center" >
       <thead>
         <tr>
           <th>Name</th>
@@ -53,8 +54,8 @@
             />
           </td>
           <td>
-            <button class="edit">edit</button   
-            ><button class="del" @click="remveUser(user.userID)">delete</button>
+          <UpdateUser :user="user"/>  
+            <button class="del" @click="remveUser(user.userID)">delete</button>
           </td>
         </tr>
         <tr v-else>
@@ -62,11 +63,13 @@
         </tr>
       </tbody>
     </table>
+  </div>
   </center>
 
     <h1>Products Table</h1>
     <AddProducts />
     <center>
+      <div class="table-responsive">
       <table class="table table-bordered border-black text-center">
       <thead>
         <tr>
@@ -106,6 +109,7 @@
         </tr>
       </tbody>
     </table>
+  </div>
   </center>
   </div>
 </template>
@@ -115,12 +119,14 @@ import Spinner from "../components/Spinner.vue";
 import AddProducts from "../components/AddProducts.vue";
 import AddUser from "../components/AddUser.vue";
 import UpdateProducts from '../components/UpdateProducts.vue'
+import UpdateUser from '../components/UpdateUser.vue'
 export default {
   components: {
     Spinner,
     AddProducts,
     AddUser,
-    UpdateProducts
+    UpdateProducts,
+    UpdateUser
   },
   computed: {
     users() {
@@ -165,12 +171,6 @@ img {
   width: 7rem;
 }
 
-.edit {
-  margin-right: 5px;
-  width: 3rem;
-  border-radius: 5px;
-  background-color: rgb(210, 205, 205);
-}
 
 .del {
   width: 4rem;

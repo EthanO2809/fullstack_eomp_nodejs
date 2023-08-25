@@ -1,7 +1,7 @@
 <template>
     <div>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex search" role="search">
+            <input class="form-control me-2 search1" type="search" placeholder="Search" aria-label="Search">
             <button class="btn search" type="submit">Search</button>
           </form>
   <div class="container">
@@ -116,4 +116,15 @@ button {
   button:active {
     transform: scale(0.97);
   }
+
+  .search1{
+    width: 80%;
+  }
+
+  .search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
 </style>

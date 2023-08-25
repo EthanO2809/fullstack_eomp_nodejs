@@ -18,7 +18,8 @@
                   </div>
                 </div>
           
-                <textarea class="form-control waa" rows="10" placeholder="Please Provide Feedback Or Leave A Query" name="name"  oninvalid="this.setCustomValidity('Please Enter Feedback Or A Query')"
+                
+                <textarea class="form-control waa" rows="10" placeholder="Please Provide Feedback" name="name"  oninvalid="this.setCustomValidity('Please Enter Feedback Or A Query')"
                 oninput="this.setCustomValidity('')" required></textarea>
                 
                 <button class="btn send-button" id="submit" type="submit" value="SEND">

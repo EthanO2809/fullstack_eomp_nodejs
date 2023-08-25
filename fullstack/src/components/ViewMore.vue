@@ -1,9 +1,10 @@
 <template>
   <div class="container" v-if="products">
     <div class="row">
-      <h2 class="class-display2">{{ products.prodName }}</h2>
+      <h2 class="class-display2">SELECTED PRODUCT</h2>
+      <br>
     </div>
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col">
           <div class="img">
             <img
@@ -28,12 +29,17 @@
     </div>
   </div>
   <div class="else" v-else>
-    <h1>Hi</h1>
+    <h1>Please Reload The Screen</h1>
+    <Spinner/>
   </div>
 </template>
 
 <script>
+import Spinner from '../components/Spinner.vue'
 export default {
+  components:{
+    Spinner
+  },
   computed: {
     products() {
       return this.$store.state.chosenProduct;
@@ -46,10 +52,6 @@ export default {
 </script>
 
 <style scoped>
-.card {
-  border: 0;
-}
-
 .img {
   float: left;
 }
@@ -57,6 +59,7 @@ export default {
 .title{
     display: flex;
     justify-content: center;
-    align-items: center;   
+    align-items: center;  
+    margin-top: 7rem; 
 }
 </style>

@@ -3,7 +3,7 @@
         <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-4 col-md-3 item">
-            <img src="https://i.postimg.cc/SKnDPNnc/Screenshot-2023-08-21-095136-removebg-preview.png" loading="lazy" alt="logo" class="logo">
+            <img src="https://i.postimg.cc/SKnDPNnc/Screenshot-2023-08-21-095136-removebg-preview.png" loading="lazy" alt="logo" class="logo img-fluid">
         </div>
         <div class="col-sm-4 col-md-3 item">
             <h3>Services</h3>

@@ -6,22 +6,22 @@
       class="btn btn-primary"
       @click="openEditModal(product.prodID)"
       data-bs-toggle="modal"
-      :data-bs-target="'#exampleModal' + product.prodID"
+      :data-bs-target="'#eexampleModal' + product.prodID"
     >
-      Update Products
+      Update
     </button>
     <!-- Modal -->
     <div
       class="modal fade"
-      :id="'exampleModal' + product.prodID"
+      :id="'eexampleModal' + product.prodID"
       tabindex="-1"
-      :aria-labelledby="'exampleModalLabel' + product.prodID"
+      :aria-labelledby="'eexampleModalLabel' + product.prodID"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">
+            <h1 class="modal-title fs-5" id="eexampleModalLabel">
               Update Products
             </h1>
             <button
@@ -53,7 +53,7 @@
             <input
               placeholder="category"
               type="text"
-              v-model="editingProduct.Category"
+              v-model="editingProduct.category"
               required
             />
             <input
@@ -91,15 +91,13 @@ export default {
   data() {
     return {
         editingProduct:{
-        product: {
           prodName: "",
           quantity: 0,
           amount: 0,
           category: "",
           prodUrl: "",
         },
-      },
-    };
+      };
   },
   computed: {
     thisProduct() {
@@ -123,9 +121,6 @@ export default {
         })
         .then(() => {
           console.log("product successfully updated");
-          setTimeout(() => {
-            location.reload();
-          }, 500);
         })
         .catch((err) => {
           console.error("Error while updating: ", err);
@@ -136,4 +131,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

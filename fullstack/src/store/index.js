@@ -50,9 +50,9 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async fetchUser(context) {
+    async fetchUser(context, id) {
       try {
-        const { data } = await axios.get(`${miniURL}user`);
+        const { data } = await axios.get(`${miniURL}user/${id}`);
         context.commit("setUser", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -66,9 +66,9 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async fetchProduct(context) {
+    async fetchProduct(context, id) {
       try {
-        const { data } = await axios.get(`${miniURL}product`);
+        const { data } = await axios.get(`${miniURL}product/${id}`);
         context.commit("setProduct", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -99,10 +99,17 @@ export default createStore({
       }
     },
     
-    async updateUser(context) {
+    async updateUser(context, payload) {
       try {
-        const { data } = await axios.patch(`${miniURL}user`);
-        context.commit("setUser", data.results);
+        const { res } = await axios.patch(`${miniURL}user/${payload.UserID}`, payload);
+        const {msg, err} = res.data
+        if(msg){
+          context.commit("setMsg", msg)
+          context.dispatch('fetchUsers')
+        }
+        if(err){
+          context.commit("setMsg", err)
+        }
       } catch (e) {
         context.commit("setMsg", "an error occured");
       }

@@ -26,7 +26,14 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: () => import( '../views/ContactView.vue')
+  },
+  {
+    path:'/viewmore/:prodID',
+    name:"ViewMore",
+    component: ()=> import('../views/MoreView.vue')
   }
+  
+
 ]
 
 const router = createRouter({

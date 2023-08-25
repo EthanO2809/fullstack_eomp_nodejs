@@ -9,7 +9,7 @@
 </div>
 <div class="pro">
   <h1 class="feature">Featured Products:</h1>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
   <div class="col">
     <div class=" card card-grid1">

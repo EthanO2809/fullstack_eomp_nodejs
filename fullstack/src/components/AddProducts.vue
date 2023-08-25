@@ -34,26 +34,31 @@
               placeholder="product Name"
               type="text"
               v-model="model.product.prodName"
+              required
             />
             <input
               placeholder="quantity"
               type="number"
               v-model="model.product.quantity"
+              required
             />
             <input
               placeholder="amount"
               type="number"
               v-model="model.product.amount"
+              required
             />
             <input
               placeholder="category"
               type="text"
               v-model="model.product.category"
+              required
             />
             <input
               placeholder="product image"
               type="text"
               v-model="model.product.prodUrl"
+              required
             />
           </div>
           <div class="modal-footer">
@@ -99,4 +104,12 @@ export default {
   
 
 <style scoped>
+.btn{
+  border: 1px solid black;
+  margin-bottom: 7px;
+}
+
+.btn:hover{
+color: rgb(126, 126, 126);
+}
 </style>

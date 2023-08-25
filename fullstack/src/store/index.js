@@ -11,11 +11,15 @@ export default createStore({
     spinner: null,
     token: null,
     msg: null,
+    chosenProduct: null
   },
   getters: {},
   mutations: {
     setUsers(state, users) {
       state.users = users;
+    },
+    setSingleProduct(state, product){
+      state.chosenProduct = product
     },
     setUser(state, user) {
       state.user = user;
@@ -70,18 +74,27 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async registerUser(context) {
-        console.log("REACHED");
+    async registerUser(context, payload) {
+        console.log("Starting registration process...");
+        console.log(payload)
       try {
-        const { res } = await axios.post(`${miniURL}user`, payload);
+        console.log("payload: ", payload)
+        const { res } = await axios.post(`${miniURL}register`, payload);
+        console.log(res.data)
         const { results, err } = await res.data;
+        console.log(results, err) 
         if (results) {
+          console.log("User registered successfully:", results[0]); 
+          console.log(results)
+          console.log(results[0])
           context.commit("setUser", results[0]);
           context.commit("setSpinner", false);
         } else {
-          context.commit("setMsg", msg);
+          console.log("Registration error:", err);
+          context.commit("setMsg", err);
         }
       } catch (e) {
+        console.error("An error occurred:", e);
         context.commit("setMsg", "an error occured");
       }
     },
@@ -94,11 +107,16 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async deleteUser(context, prodID) {
+    async deleteUser(context, id) {
       try {
-        const { res } = await axios.delete(`${miniURL}user`);
-        context.commit("setUser", data.results);
+        const res = await axios.delete(`${miniURL}user/${id}`);
+        if(res.status === 200){
+          context.commit('setUser', res.data.msg)
+        } else{
+          context.commit('setMsg', "an error occured, please tru again")
+        }
       } catch (e) {
+        console.error('Error while deleting user: ', e)
         context.commit("setMsg", "an error occured");
       }
     },
@@ -117,10 +135,16 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async updateProduct(context) {
+    async updateProduct(context, payload) {
       try {
-        const { data } = await axios.patch(`${miniURL}product`);
-        context.commit("setProduct", data.results);
+        const res = await axios.patch(`${miniURL}product/${payload.prodID}`, payload);
+        const { msg, err } = res.data
+        if(msg){
+          context.commit("setProduct", msg)
+        }
+        if(err){
+          context.commit("setMsg", err)
+        }
       } catch (e) {
         context.commit("setMsg", "an error occured");
       }

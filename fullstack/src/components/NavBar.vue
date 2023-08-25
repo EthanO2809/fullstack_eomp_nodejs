@@ -43,7 +43,9 @@
   }
   
   .nav-item{
-    margin-left: 1rem;
+    margin-left: 1.6rem;
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
   }
   .navbar{
     background-color: grey !important;

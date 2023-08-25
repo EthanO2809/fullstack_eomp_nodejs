@@ -3,6 +3,7 @@
     <div class="row">
       <h2 class="class-display2">SELECTED PRODUCT</h2>
       <br>
+
     </div>
     <div class="row">
       <div class="col">
@@ -15,11 +16,12 @@
           </div>
           <center>
           <div class="body">
-            <h2 class="title">
-              {{ products.prodName }} <br />
+            <h2 class=" mt-5">
+              {{ products.prodName }} <br>
               R {{ products.amount }}
             </h2>
-            <h2 class="title">{{ products.Category }}</h2>
+            <h2 class="">{{ products.Category }}</h2> <br>
+            <p>{{ products.prodDesc }}</p>
           </div>
         </center>
       </div>
@@ -58,8 +60,8 @@ export default {
 
 .title{
     display: flex;
-    justify-content: center;
-    align-items: center;  
-    margin-top: 7rem; 
+    justify-content: right;
+    align-items: right;   
+    text-align: left;
 }
 </style>

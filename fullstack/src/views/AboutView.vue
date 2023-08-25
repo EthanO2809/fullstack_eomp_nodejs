@@ -1,11 +1,11 @@
 <template>
   <div class="about">
-    <h1 class="mb-3 mt-3 fs-1 h-01">About Sole Cartel</h1>
+    <h1 class="mb-3 mt-5 h-01">About Sole Cartel</h1>
     <div class="abouttxt">
     <p class="mb-5 abouttxt fs-5">{{ aboutText }}</p>
     </div>
-    <h2 class="fs-1 fw-bolder mb-5">Meet Our Team</h2>
-    <div class="row mb-5">
+    <h2 class="fs-1 fw-bolder mb-5 mt-5 text-decoration-underline">Meet Our Team</h2>
+    <div class="row rows">
       <div class="col-6 flex">
       <!-- Card01 -->
       <div class="card-client">
@@ -86,6 +86,15 @@
 </div>
     </div>
 
+    <div class="row mr">
+    <div class="col-6">
+    <h2 class="text-start fs-1 fw-bolder services">Our Services</h2>
+    <p class="servicestxt text-start fs-2">Welcome to Sole Cartel Sneaker Store, where sneaker culture comes to life. Our store is a haven for sneaker enthusiasts, collectors, and fashion-forward individuals who share a passion for the latest kicks and timeless classics. Our shelves are adorned with an extensive collection of sneakers, showcasing sought-after releases from top brands alongside iconic designs that have left their mark on the sneaker world.</p>
+    </div>
+    <div class="col-6">
+      <img src="https://i.postimg.cc/BbBMMXvS/Adidas-Brand-Centre-1024x682.jpg" alt="" class="img-03">
+    </div>
+    </div>
     <div class="officialsponsors">
       <h2 class="fs-1 fw-bold mb-4">Official Sponsors</h2>
       <!-- NIKE -->
@@ -119,22 +128,57 @@ export default {
 /* Add your CSS styles here */
 .about{
   font-family: "Poppins", sans-serif;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .abouttxt{
   width: 90%;
-  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 200px !important;
+  text-align: left;
+  font-size: 26px !important;
   position: relative;
-  left: 5%;
+  font-weight: 500;
+  left: 6.6%;
+}
+
+.img-03{
+  width: 25rem;
+  height: 20rem;
+}
+
+.services{
+ margin-right: 400px !important;
+ text-align: start !important;
+}
+
+.servicestxt{
+  text-align: start !important;
+  font-size: 20px !important;
+  font-weight: 500;
+  margin-bottom: 200px !important;
 }
 
 .logos{
-  width: 8rem;
+  width: 10rem;
+}
+
+.logos:hover{
+  transition: .2s ease-in;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.rows{
+  margin-bottom: 200px !important;
 }
 
 .h-01{
   font-weight: bolder;
+  text-align: center;
+  text-align: left;
+  position: relative;
+  left: 12.4%;
 }
 
 .row{
@@ -151,7 +195,8 @@ export default {
 
 .card-client {
   background: #535353;
-  width: 16rem;
+  width: 24rem;
+  height: 30rem;
   padding-top: 25px;
   padding-bottom: 25px;
   padding-left: 20px;
@@ -172,8 +217,8 @@ export default {
 .user-picture {
   overflow: hidden;
   object-fit: cover;
-  width: 8rem;
-  height: 8rem;
+  width: 12rem;
+  height: 12rem;
   border: 5px solid #000000;
   border-radius: 999px;
   display: flex;
@@ -191,13 +236,13 @@ export default {
   margin: 0;
   margin-top: 20px;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .name-client span {
   display: block;
   font-weight: 200;
-  font-size: 19px;
+  font-size: 24px;
 }
 
 .social-media:before {
@@ -221,8 +266,9 @@ export default {
 }
 
 .social-media a svg {
-  width: 1.6rem;
-  fill: currentColor;
+  margin-top: 1rem;
+  width: 2rem;
+  fill: white;
 }
 
 /*-- Tooltip Social Media --*/
@@ -264,11 +310,13 @@ export default {
 }
 
 .img-01{
-  width: 8rem;
-  height: 7.4rem;
+  width: 12rem;
+  height: 11.4rem;
 }
 .img-02{
-  width: 8rem;
-  height: 8.8rem;
+  width: 12rem;
+  height: 14rem;
+  position: relative;
+  top: .1%;
 }
 </style>

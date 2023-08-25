@@ -1,21 +1,26 @@
 <template>
-    <div>
-        <form class="d-flex search" role="search">
-            <input class="form-control me-2 search1" type="search" placeholder="Search" aria-label="Search">
+    <div class="prods">
+        <form class="d-flex mb-5 mt-4" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn search" type="submit">Search</button>
           </form>
   <div class="container">
-    <div class="row">
-      <h2 class="class-display2">Products</h2>
+    <div class="row mb-2">
+      <h2 class="class-display2 fs-1 mb-5">Products</h2>
     </div>
-    <div class="row justify-content-center gap-3" v-if="products">
-        <div class="col" v-for="productItem in products" :key="productItem.prodID">
-        <div class="card" style="width: 18rem">
-          <img
-            :src="productItem.prodUrl"
-            class="card-img-top"
-            :alt="productItem.prodName"
-          />
+    <div class="row justify-content-center gap-6" v-if="products">
+        <div class="col-3" v-for="productItem in products" :key="productItem.prodID">
+        <div
+            class="card"
+            style="width: 18rem"
+            @mouseover="hoveredProduct = productItem"
+            @mouseleave="hoveredProduct = null"
+          >
+            <img
+              :src="hoveredProduct === productItem ? productItem.hoveredProdUrl : productItem.prodUrl"
+              class="card-img-top"
+              :alt="productItem.prodName"
+            />
           <div class="card-body">
             <h5 class="card-title">{{ productItem.prodName }} <br/></h5>
             <center>
@@ -56,15 +61,34 @@ export default {
   mounted() {
     this.$store.dispatch("fetchProducts");
   },
+   data() {
+    return {
+      hoveredProduct: null,
+    };
+  },
 };
 </script>
 
 <style scoped>
+.prods{
+  font-family: "Poppins", sans-serif;
+}
+
+.form-control{
+  width: 16rem;
+  margin-left: 70rem;
+}
+
 .card-img-top {
   aspect-ratio: 1/1;
 }
 .card {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.card:hover .hover-overlay {
+  opacity: 1;
 }
 
 .view {
@@ -79,13 +103,16 @@ button{
 
 button {
     width: 7rem !important;
-    height: 30px;
+    text-align: center;
+    height: 34px;
     gap: 12px;
+    font-size: .8rem;
     cursor: pointer;
     border: 3px solid rgb(134, 134, 134) ;
     background-color: rgb(200, 200, 200);
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.137);
   }
+  
   
   .view {
     display: flex;
@@ -100,6 +127,26 @@ button {
   button:hover .arrow {
     animation: slide-in-left 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
+
+  .hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.card .hover-overlay svg {
+  fill: white;
+}
   
   @keyframes slide-in-left {
     0% {
